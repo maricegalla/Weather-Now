@@ -19,7 +19,7 @@ const theme = {
     }
   },
   fonts: {
-    body: "Arial, Helvetica, sans-serif",
+    body: "Helvetica, Arial, sans-serif",
   },
 };
 
