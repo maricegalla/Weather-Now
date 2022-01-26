@@ -1,5 +1,4 @@
 * {
-  scroll-behavior: smooth;
   box-sizing: border-box;
-  scroll-margin-left: 250px;
+  overflow: hidden;
 }

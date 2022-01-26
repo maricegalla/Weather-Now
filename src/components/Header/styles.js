@@ -8,6 +8,7 @@ const HeaderContentContainer = styled.div`
   align-items: center;
   height: 60px;
   z-index: 10;
+  background-color: ${props => props.theme.colors.white};
 
   svg {
     width: 40%;
