@@ -15,6 +15,7 @@ const Card = ({ city, country }) => {
   const [error, setError] = useState(false);
 
   const getData = useCallback(async (city) => {
+    localStorage.clear();
     setError(false);
     setLoading(true);
     const url = "https://api.openweathermap.org/data/2.5/weather";
@@ -32,6 +33,7 @@ const Card = ({ city, country }) => {
       const hum = Math.round(req.data.main.humidity, 0);
       const updatedAt = displayTime();
       setCityData({ temp, press, hum, updatedAt });
+      saveLocalStorage(temp, press, updatedAt, hum, city)
       setLoading(false);
       colorChange(city);
     } catch (e) {
@@ -86,19 +88,31 @@ const Card = ({ city, country }) => {
 
   const tryAgain = (e) => {
     e.preventDefault();
-    const thisCity = e.target.parentNode.parentNode.firstChild.getAttribute("id")
-    getData(thisCity)
-  }
+    const fullCity =
+      e.target.parentNode.parentNode.firstChild.firstChild.innerText;
+    const thisCity = fullCity.slice(0, -4);
+    getData(thisCity);
+  };
+
+  const saveLocalStorage = (temp, press, updatedAt, hum, city) => {
+    const data = {
+      temperature: temp,
+      pressure: press,
+      humidity: hum,
+      updatedAt: updatedAt,
+    };
+    localStorage.setItem(city, JSON.stringify(data));
+  };
 
   useEffect(() => {
     getData(city);
   }, [city, getData]);
 
-  setInterval(getData, 600000);
+  // setInterval(getData, 600000);
 
   return (
     <CardContentContainer>
-      <CardHeaderContainer id={city}>
+      <CardHeaderContainer>
         <span>
           {city}, {country}
         </span>
@@ -108,10 +122,12 @@ const Card = ({ city, country }) => {
           return <Loader className="loader" />;
         }
         if (error) {
-          return <ErrorContainer>
-            <p>Something went wrong</p>
-            <button onClick={(e) => tryAgain(e)}>Try Again</button>
-          </ErrorContainer>;
+          return (
+            <ErrorContainer>
+              <p>Something went wrong</p>
+              <button onClick={(e) => tryAgain(e)}>Try Again</button>
+            </ErrorContainer>
+          );
         } else {
           if (city === "Urubici") {
             return (
