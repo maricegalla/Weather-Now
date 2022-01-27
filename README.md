@@ -2,7 +2,11 @@
 
 ## Objetivo
 
-Implementar uma aplicação para exibir a temperatura atual de 3 cidades diferentes, devendo respeitar as seguintes especificações:
+Implementar uma aplicação para exibir a temperatura atual de 3 cidades diferentes.
+
+## Requisitos técnicos
+
+A aplicação deve respeitar os seguintes requisitos técnicos:
 
 - Exibir as condições climáticas das seguintes cidades: Nuuk/GL, Urubici/BR e Nairobi/KE;
 - Temperatura deve ser exibidas em graus Celsius;
@@ -20,18 +24,15 @@ em laranja;
 
 O visual da aplicação e as informações climáticas a serem exibidas devem respeitar os mockups apresentados no [Marvel](https://marvelapp.com/prototype/13gd240g/screen/55669566?sign_up_origin=player) do projeto.
 
-## Requisitos técnicos
-
- - Front-End em ReactJs.
-
-## Funcionalidades
-
- - Visualizar as temperaturas de Nuuk e Nairobi, e a temperatura, humidade e pressão em Urubici.
-
 ## Autora
 
 - [Marília Cegalla Aldrighi](https://www.linkedin.com/in/marilia-aldrighi/)
 
+## Variáveis de Ambiente
+
+Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
+
+`REACT_APP_APIKEY`
 
 ## Para rodar Localmente
 
@@ -60,6 +61,11 @@ Inicie a Aplicação
 ```
 ## Stack utilizada
 
-**Front-End:** ReactJs & Styled Components.
+**Front-End:** ReactJS & Styled Components.
 
 ## Screenshot
+
+
+## Deploy
+
+A aplicação está diponível na seguinte URL: https://weather-now-cyan.vercel.app/
