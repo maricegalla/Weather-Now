@@ -4,6 +4,7 @@ import {
   CardHeaderContainer,
   CardMainContainer,
   CardFooterContainer,
+  ErrorContainer,
 } from "./styles";
 import axios from "axios";
 import { ReactComponent as Loader } from "src/assets/loader.svg";
@@ -14,6 +15,7 @@ const Card = ({ city, country }) => {
   const [error, setError] = useState(false);
 
   const getData = useCallback(async (city) => {
+    setError(false);
     setLoading(true);
     const url = "https://api.openweathermap.org/data/2.5/weather";
     const options = {
@@ -28,11 +30,12 @@ const Card = ({ city, country }) => {
       const temp = Math.round(req.data.main.temp, 0);
       const press = Math.round(req.data.main.pressure, 0);
       const hum = Math.round(req.data.main.humidity, 0);
-      const updated = displayTime();
-      setCityData({ temp, press, hum, updated });
+      const updatedAt = displayTime();
+      setCityData({ temp, press, hum, updatedAt });
       setLoading(false);
       colorChange(city);
     } catch (e) {
+      console.log(e.message);
       setLoading(false);
       setError(true);
     }
@@ -54,7 +57,7 @@ const Card = ({ city, country }) => {
   };
 
   const displayTime = () => {
-    let str = "";
+    let time = "";
 
     const currentTime = new Date();
     const hours =
@@ -72,14 +75,20 @@ const Card = ({ city, country }) => {
         ? "0" + currentTime.getSeconds()
         : currentTime.getSeconds();
 
-    str += hours + ":" + minutes + ":" + seconds + " ";
+    time += hours + ":" + minutes + ":" + seconds + " ";
     if (hours > 11) {
-      str += "PM";
+      time += "PM";
     } else {
-      str += "AM";
+      time += "AM";
     }
-    return str;
+    return time;
   };
+
+  const tryAgain = (e) => {
+    e.preventDefault();
+    const thisCity = e.target.parentNode.parentNode.firstChild.getAttribute("id")
+    getData(thisCity)
+  }
 
   useEffect(() => {
     getData(city);
@@ -89,7 +98,7 @@ const Card = ({ city, country }) => {
 
   return (
     <CardContentContainer>
-      <CardHeaderContainer>
+      <CardHeaderContainer id={city}>
         <span>
           {city}, {country}
         </span>
@@ -99,7 +108,10 @@ const Card = ({ city, country }) => {
           return <Loader className="loader" />;
         }
         if (error) {
-          return <p>Erro</p>;
+          return <ErrorContainer>
+            <p>Something went wrong</p>
+            <button onClick={(e) => tryAgain(e)}>Try Again</button>
+          </ErrorContainer>;
         } else {
           if (city === "Urubici") {
             return (
@@ -127,7 +139,7 @@ const Card = ({ city, country }) => {
                       </span>
                     </div>
                   </div>
-                  <p>Updated at {cityData.updated}</p>
+                  <p>Updated at {cityData.updatedAt}</p>
                 </CardFooterContainer>
               </>
             );
@@ -141,7 +153,7 @@ const Card = ({ city, country }) => {
                   </p>
                 </CardMainContainer>
                 <CardFooterContainer>
-                  <p>Updated at {cityData.updated}</p>
+                  <p>Updated at {cityData.updatedAt}</p>
                 </CardFooterContainer>
               </>
             );

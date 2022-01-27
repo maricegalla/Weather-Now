@@ -101,9 +101,38 @@ const CardFooterContainer = styled.div`
   }
 `;
 
+
+const ErrorContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 180px;
+  width: 100%;
+  gap: 20px;
+
+  p {
+    color: ${(props) => props.theme.colors.red};
+    font-size: 18px;
+    font-weight: 300;
+  }
+
+  button {
+    background-color: ${(props) => props.theme.colors.white};
+    color: ${(props) => props.theme.colors.darkGray};
+    font-size: 18px;
+    height: 44px;
+    width: 110px;
+    border: 2px solid  ${(props) => props.theme.colors.darkGray};
+    border-radius: 22px;
+    cursor: pointer;
+  }
+`
+
 export {
   CardContentContainer,
   CardHeaderContainer,
   CardMainContainer,
   CardFooterContainer,
+  ErrorContainer,
 };
