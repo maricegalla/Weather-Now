@@ -7,6 +7,7 @@ const CardContentContainer = styled.div`
   align-items: center;
   width: 260px;
   min-height: 224px;
+  max-height: 320px;
   background-color: ${(props) => props.theme.colors.white};
   border-radius: 5px;
   box-shadow: ${(props) => props.theme.colors.lightGray.shade4} 2px 2px 5px 0;
@@ -31,33 +32,65 @@ const CardMainContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 140px;
+  height: 160px;
   width: 100%;
+  padding-top: 15px;
 
-  h1 {
-    font-size: 90px;
+  p {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    font-size: 100px;
   }
 
-  .orange {
-    color: ${(props) => props.theme.colors.orange}
-  }
-
-  .blue {
-    color: ${(props) => props.theme.colors.blue}
-  }
-
-  .red {
-    color: ${(props) => props.theme.colors.blue}
+  small {
+    position: relative;
+    bottom: 32px;
+    font-size: 50px;
   }
 `;
 
 const CardFooterContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
   min-height: 40px;
+  max-height: 100px;
+  padding: 15px;
   background-color: ${(props) => props.theme.colors.lightGray.shade1};
+  gap: 15px;
+
+  & > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    
+    & > div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+
+  label {
+    color: ${(props) => props.theme.colors.mediumGray};
+    font-size: 12px;
+  }
+
+  span {
+    color: ${(props) => props.theme.colors.darkGray};
+    font-size: 18px;
+  }
+
+  small {
+    color: ${(props) => props.theme.colors.darkGray};
+    font-size: 12px;
+  }
 
   p {
     color: ${(props) => props.theme.colors.mediumGray};
