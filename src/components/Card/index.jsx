@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   CardContentContainer,
   CardHeaderContainer,
@@ -15,6 +15,7 @@ const Card = ({ city, country }) => {
   const [error, setError] = useState(false);
 
   const getData = useCallback(async (city) => {
+    console.log("entrei");
     localStorage.clear();
     setError(false);
     setLoading(true);
@@ -33,7 +34,7 @@ const Card = ({ city, country }) => {
       const hum = Math.round(req.data.main.humidity, 0);
       const updatedAt = displayTime();
       setCityData({ temp, press, hum, updatedAt });
-      saveLocalStorage(temp, press, updatedAt, hum, city)
+      saveLocalStorage(temp, press, updatedAt, hum, city);
       setLoading(false);
       colorChange(city);
     } catch (e) {
@@ -104,12 +105,14 @@ const Card = ({ city, country }) => {
     localStorage.setItem(city, JSON.stringify(data));
   };
 
+
   useEffect(() => {
     getData(city);
+    setTimeout(() => {
+      window.location.reload();
+    }, 600000);
   }, [city, getData]);
-
-  // setInterval(getData, 600000);
-
+  
   return (
     <CardContentContainer>
       <CardHeaderContainer>
