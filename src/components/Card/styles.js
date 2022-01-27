@@ -48,7 +48,7 @@ const CardMainContainer = styled.div`
 
   small {
     position: relative;
-    bottom: 32px;
+    bottom: 20px;
     font-size: 50px;
   }
 `;
