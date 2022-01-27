@@ -15,7 +15,6 @@ const Card = ({ city, country }) => {
   const [error, setError] = useState(false);
 
   const getData = useCallback(async (city) => {
-    console.log("entrei");
     localStorage.clear();
     setError(false);
     setLoading(true);
@@ -105,14 +104,13 @@ const Card = ({ city, country }) => {
     localStorage.setItem(city, JSON.stringify(data));
   };
 
-
   useEffect(() => {
     getData(city);
     setTimeout(() => {
       window.location.reload();
     }, 600000);
   }, [city, getData]);
-  
+
   return (
     <CardContentContainer>
       <CardHeaderContainer>
