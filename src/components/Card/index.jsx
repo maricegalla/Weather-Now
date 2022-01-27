@@ -6,11 +6,14 @@ import {
   CardFooterContainer,
 } from "./styles";
 import axios from "axios";
+import { ReactComponent as Loader } from "src/assets/loader.svg";
 
 const Card = ({ city, country }) => {
   const [cityData, setCityData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const getData = useCallback(async (city) => {
+    setLoading(true);
     const url = "https://api.openweathermap.org/data/2.5/weather";
     const options = {
       params: {
@@ -25,6 +28,7 @@ const Card = ({ city, country }) => {
     const hum = Math.round(req.data.main.humidity, 0);
     const updated = displayTime();
     setCityData({ temp, press, hum, updated });
+    setLoading(false);
     colorChange(city);
   }, []);
 
@@ -84,32 +88,57 @@ const Card = ({ city, country }) => {
           {city}, {country}
         </span>
       </CardHeaderContainer>
-      <CardMainContainer>
-        <p id={city}>
-          {cityData.temp}
-          <small>°</small>
-        </p>
-      </CardMainContainer>
-
-      {city === "Urubici" ? (
-        <CardFooterContainer>
-          <div>
-            <div>
-              <label>HUMIDITY</label>
-              <span>{cityData.hum}<small>%</small></span>
-            </div>
-            <div>
-              <label>PRESSURE</label>
-              <span>{cityData.press}<small>hPa</small></span>
-            </div>
-          </div>
-          <p>Updated at {cityData.updated}</p>
-        </CardFooterContainer>
-      ) : (
-        <CardFooterContainer>
-          <p>Updated at {cityData.updated}</p>
-        </CardFooterContainer>
-      )}
+      {(() => {
+        if (loading) {
+          return <Loader className="loader"/>;
+        } else {
+          if (city === "Urubici") {
+            return (
+              <>
+                <CardMainContainer>
+                  <p id={city}>
+                    {cityData.temp}
+                    <small>°</small>
+                  </p>
+                </CardMainContainer>
+                <CardFooterContainer>
+                  <div>
+                    <div>
+                      <label>HUMIDITY</label>
+                      <span>
+                        {cityData.hum}
+                        <small>%</small>
+                      </span>
+                    </div>
+                    <div>
+                      <label>PRESSURE</label>
+                      <span>
+                        {cityData.press}
+                        <small>hPa</small>
+                      </span>
+                    </div>
+                  </div>
+                  <p>Updated at {cityData.updated}</p>
+                </CardFooterContainer>
+              </>
+            );
+          } else {
+            return (
+              <>
+                <CardMainContainer>
+                  <p id={city}>
+                    {cityData.temp}
+                    <small>°</small>
+                  </p>
+                </CardMainContainer>
+                <CardFooterContainer>
+                  <p>Updated at {cityData.updated}</p>
+                </CardFooterContainer>
+              </>
+            );
+          }
+        }
+      })()}
     </CardContentContainer>
   );
 };

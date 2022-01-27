@@ -12,6 +12,10 @@ const CardContentContainer = styled.div`
   border-radius: 5px;
   box-shadow: ${(props) => props.theme.colors.lightGray.shade4} 2px 2px 5px 0;
   z-index: 1;
+
+  .loader{
+    margin-top: 54px;
+  }
 `;
 
 const CardHeaderContainer = styled.div`
