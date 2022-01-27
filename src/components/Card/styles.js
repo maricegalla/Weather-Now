@@ -38,7 +38,7 @@ const CardMainContainer = styled.div`
   align-items: center;
   height: 160px;
   width: 100%;
-  padding-top: 15px;
+  padding-top: 10px;
 
   p {
     display: flex;
