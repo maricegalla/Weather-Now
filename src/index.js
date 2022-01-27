@@ -15,12 +15,9 @@ const theme = {
     lightGray: {
       shade1:"rgba(241, 241, 241, 0.5)",
       shade2:"#F1F1F1",
-      shade3:"EBEBEB",
-      shade4:"rgba(51, 51, 51, 0.9)"
+      shade3:"#EBEBEB",
+      shade4:"rgba(51, 51, 51, 0.1)"
     }
-  },
-  fonts: {
-    body: "Helvetica, Arial, sans-serif",
   },
 };
 
