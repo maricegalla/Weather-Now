@@ -30,7 +30,7 @@ O visual da aplicação e as informações climáticas a serem exibidas devem re
 
 ## Variáveis de Ambiente
 
-Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
+Para rodar esse projeto, você vai precisar adicionar a seguinte variável de ambiente no seu .env
 
 `REACT_APP_APIKEY`
 
