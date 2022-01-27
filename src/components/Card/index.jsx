@@ -11,6 +11,7 @@ import { ReactComponent as Loader } from "src/assets/loader.svg";
 const Card = ({ city, country }) => {
   const [cityData, setCityData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const getData = useCallback(async (city) => {
     setLoading(true);
@@ -22,14 +23,19 @@ const Card = ({ city, country }) => {
         appid: process.env.REACT_APP_APIKEY,
       },
     };
-    const req = await axios.get(url, options);
-    const temp = Math.round(req.data.main.temp, 0);
-    const press = Math.round(req.data.main.pressure, 0);
-    const hum = Math.round(req.data.main.humidity, 0);
-    const updated = displayTime();
-    setCityData({ temp, press, hum, updated });
-    setLoading(false);
-    colorChange(city);
+    try {
+      const req = await axios.get(url, options);
+      const temp = Math.round(req.data.main.temp, 0);
+      const press = Math.round(req.data.main.pressure, 0);
+      const hum = Math.round(req.data.main.humidity, 0);
+      const updated = displayTime();
+      setCityData({ temp, press, hum, updated });
+      setLoading(false);
+      colorChange(city);
+    } catch (e) {
+      setLoading(false);
+      setError(true);
+    }
   }, []);
 
   const colorChange = (city) => {
@@ -90,7 +96,10 @@ const Card = ({ city, country }) => {
       </CardHeaderContainer>
       {(() => {
         if (loading) {
-          return <Loader className="loader"/>;
+          return <Loader className="loader" />;
+        }
+        if (error) {
+          return <p>Erro</p>;
         } else {
           if (city === "Urubici") {
             return (
