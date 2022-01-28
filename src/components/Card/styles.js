@@ -8,12 +8,12 @@ const CardContentContainer = styled.div`
   width: 260px;
   min-height: 224px;
   max-height: 320px;
-  background-color: ${(props) => props.theme.colors.white};
+  background-color: var(--white);
   border-radius: 5px;
-  box-shadow: ${(props) => props.theme.colors.lightGray.shade4} 2px 2px 5px 0;
+  box-shadow: var(--lightGrayShade4) 2px 2px 5px 0;
   z-index: 1;
 
-  .loader{
+  .loader {
     margin-top: 54px;
   }
 `;
@@ -24,10 +24,10 @@ const CardHeaderContainer = styled.div`
   align-items: center;
   height: 44px;
   width: 100%;
-  border-bottom: 1px solid ${(props) => props.theme.colors.lightGray.shade3};
+  border-bottom: 1px solid var(--lightGrayShade3);
 
   span {
-    color: ${(props) => props.theme.colors.darkGray};
+    color: var(--darkGray);
     font-size: 18px;
   }
 `;
@@ -62,7 +62,7 @@ const CardFooterContainer = styled.div`
   min-height: 40px;
   max-height: 100px;
   padding: 15px;
-  background-color: ${(props) => props.theme.colors.lightGray.shade1};
+  background-color: var(--lightGrayShade1);
   gap: 15px;
 
   & > div {
@@ -70,7 +70,7 @@ const CardFooterContainer = styled.div`
     justify-content: center;
     align-items: center;
     gap: 60px;
-    
+
     & > div {
       display: flex;
       justify-content: center;
@@ -81,26 +81,25 @@ const CardFooterContainer = styled.div`
   }
 
   label {
-    color: ${(props) => props.theme.colors.mediumGray};
+    color: var(--mediumGray);
     font-size: 12px;
   }
 
   span {
-    color: ${(props) => props.theme.colors.darkGray};
+    color: var(--darkGray);
     font-size: 18px;
   }
 
   small {
-    color: ${(props) => props.theme.colors.darkGray};
+    color: var(--darkGray);
     font-size: 12px;
   }
 
   p {
-    color: ${(props) => props.theme.colors.mediumGray};
+    color: var(--mediumGray);
     font-size: 12px;
   }
 `;
-
 
 const ErrorContainer = styled.div`
   display: flex;
@@ -112,22 +111,22 @@ const ErrorContainer = styled.div`
   gap: 20px;
 
   p {
-    color: ${(props) => props.theme.colors.red};
+    color: var(--red);
     font-size: 18px;
     font-weight: 300;
   }
 
   button {
-    background-color: ${(props) => props.theme.colors.white};
-    color: ${(props) => props.theme.colors.darkGray};
+    background-color: var(--white);
+    color: var(--darkGray);
     font-size: 18px;
     height: 44px;
     width: 110px;
-    border: 2px solid  ${(props) => props.theme.colors.darkGray};
+    border: 2px solid var(--darkGray);
     border-radius: 22px;
     cursor: pointer;
   }
-`
+`;
 
 export {
   CardContentContainer,

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const MainContentContainer = styled.div`
-  background-color: ${props => props.theme.colors.lightGray.shade2};
+  background-color: var(--lightGrayShade2);
   display: flex;
   align-items: center;
   justify-content: center;

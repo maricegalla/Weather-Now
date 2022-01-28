@@ -5,7 +5,7 @@ import {ReactComponent as Logo} from "src/assets/logo.svg";
 const Header = () => {
   return (
     <HeaderContentContainer>
-      <Logo />
+      <Logo data-testid="logo"/>
     </HeaderContentContainer>
   );
 };
