@@ -65,7 +65,9 @@ Inicie a Aplicação
 
 ## Screenshot
 
+![Captura de tela de 2022-01-28 07-00-30](https://user-images.githubusercontent.com/76533793/151604121-3e58b902-1056-4df1-a64b-835dde14d64a.png)
 
 ## Deploy
 
 A aplicação está diponível na seguinte URL: https://weather-now-cyan.vercel.app/
+
