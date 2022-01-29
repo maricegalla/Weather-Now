@@ -59,6 +59,19 @@ Inicie a Aplicação
 ```bash
   npm start
 ```
+## Rodando os testes
+
+Para rodar os testes, rode o seguinte comando
+
+```bash
+  npm test
+```
+
+Para verificar a cobertura dos testes, rode o seguinte comando
+
+```bash
+  npm run test-coverage
+```
 ## Stack utilizada
 
 **Front-End:** ReactJS & Styled Components.
