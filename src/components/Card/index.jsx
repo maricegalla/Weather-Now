@@ -120,7 +120,7 @@ const Card = ({ city, country }) => {
       </CardHeaderContainer>
       {(() => {
         if (loading) {
-          return <Loader className="loader" />;
+          return <Loader id="loader" data-testid="loader"/>;
         }
         if (error) {
           return (

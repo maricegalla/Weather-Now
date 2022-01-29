@@ -15,7 +15,7 @@ const Main = () => {
   return (
     <MainContentContainer>
       {cities.map((c, index) => (
-        <Card key={index} city={c.name} country={c.country}/>
+        <Card key={index} city={c.name} country={c.country} data-testid="card"/>
       ))}
     </MainContentContainer>
   );

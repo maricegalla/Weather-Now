@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-const CardContentContainer = styled.div`
+const CardContentContainer = styled.div.attrs({
+  'data-testid': 'card'
+})`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -13,7 +15,7 @@ const CardContentContainer = styled.div`
   box-shadow: var(--lightGrayShade4) 2px 2px 5px 0;
   z-index: 1;
 
-  .loader {
+  #loader {
     margin-top: 54px;
   }
 `;
