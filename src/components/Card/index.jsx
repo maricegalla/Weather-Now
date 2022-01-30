@@ -23,7 +23,7 @@ const Card = ({ city, country }) => {
       params: {
         q: city,
         units: "metric",
-        appid: "process.env.REACT_APP_APIKEY",
+        appid: process.env.REACT_APP_APIKEY,
       },
     };
     try {
