@@ -4,10 +4,10 @@ import {
   CardHeaderContainer,
   CardMainContainer,
   CardFooterContainer,
-  ErrorContainer,
 } from "./styles";
 import axios from "axios";
 import { ReactComponent as Loader } from "src/assets/loader.svg";
+import Error from "src/components/Error";
 
 const Card = ({ city, country }) => {
   const [cityData, setCityData] = useState([]);
@@ -23,7 +23,7 @@ const Card = ({ city, country }) => {
       params: {
         q: city,
         units: "metric",
-        appid: process.env.REACT_APP_APIKEY,
+        appid: "process.env.REACT_APP_APIKEY",
       },
     };
     try {
@@ -86,14 +86,6 @@ const Card = ({ city, country }) => {
     return time;
   };
 
-  const tryAgain = (e) => {
-    e.preventDefault();
-    const fullCity =
-      e.target.parentNode.parentNode.firstChild.firstChild.innerText;
-    const thisCity = fullCity.slice(0, -4);
-    getData(thisCity);
-  };
-
   const saveLocalStorage = (temp, press, updatedAt, hum, city) => {
     const data = {
       temperature: temp,
@@ -103,6 +95,17 @@ const Card = ({ city, country }) => {
     };
     localStorage.setItem(city, JSON.stringify(data));
   };
+
+  const tryAgain = useCallback(
+    (e) => {
+      e.preventDefault();
+      const fullCity =
+        e.target.parentNode.parentNode.firstChild.firstChild.innerText;
+      const thisCity = fullCity.slice(0, -4);
+      getData(thisCity);
+    },
+    [getData]
+  );
 
   useEffect(() => {
     getData(city);
@@ -120,15 +123,10 @@ const Card = ({ city, country }) => {
       </CardHeaderContainer>
       {(() => {
         if (loading) {
-          return <Loader id="loader" data-testid="loader"/>;
+          return <Loader id="loader" data-testid="loader" />;
         }
         if (error) {
-          return (
-            <ErrorContainer>
-              <p>Something went wrong</p>
-              <button onClick={(e) => tryAgain(e)}>Try Again</button>
-            </ErrorContainer>
-          );
+          return <Error onClick={(e) => tryAgain(e)} />;
         } else {
           if (city === "Urubici") {
             return (

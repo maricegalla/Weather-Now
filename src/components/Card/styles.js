@@ -34,7 +34,9 @@ const CardHeaderContainer = styled.div`
   }
 `;
 
-const CardMainContainer = styled.div`
+const CardMainContainer = styled.div.attrs({
+  'data-testid': 'temperature'
+})`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,7 +57,9 @@ const CardMainContainer = styled.div`
   }
 `;
 
-const CardFooterContainer = styled.div`
+const CardFooterContainer = styled.div.attrs({
+  'data-testid': 'cardFooter'
+})`
   display: flex;
   flex-direction: column;
   justify-content: center;

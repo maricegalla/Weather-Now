@@ -1,7 +1,5 @@
 import React from "react";
 import { render, screen, cleanup } from "@testing-library/react";
-import "jest-styled-components";
-import "@testing-library/jest-dom";
 import Header from "src/components/Header";
 
 afterEach(cleanup);
