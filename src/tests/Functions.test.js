@@ -1,5 +1,3 @@
-import { cleanup } from "@testing-library/react";
-
 const tempMock = 20;
 const pressMock = 1015;
 const updatedAtMock = "08:55:09 PM";
@@ -11,7 +9,6 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-  cleanup();
   const tk = require("timekeeper");
   tk.reset();
 });

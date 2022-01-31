@@ -28,15 +28,14 @@ const CardHeaderContainer = styled.div`
   width: 100%;
   border-bottom: 1px solid var(--lightGrayShade3);
 
-  span {
+  h3 {
     color: var(--darkGray);
     font-size: 18px;
+    font-weight: normal;
   }
 `;
 
-const CardMainContainer = styled.div.attrs({
-  'data-testid': 'temperature'
-})`
+const CardMainContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -91,9 +90,10 @@ const CardFooterContainer = styled.div.attrs({
     font-size: 12px;
   }
 
-  span {
+  h3 {
     color: var(--darkGray);
     font-size: 18px;
+    font-weight: normal;
   }
 
   small {

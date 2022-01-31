@@ -1,8 +1,6 @@
 import React from "react";
-import { render, cleanup, screen, act } from "@testing-library/react";
+import { render, screen, act } from "@testing-library/react";
 import App from "src/App";
-
-afterEach(cleanup);
 
 describe("testing the `card` component", () => {
   test("renders the header", () => {
@@ -21,14 +19,16 @@ describe("testing the `card` component", () => {
     await act(() => promise);
   });
 
-  test("renders cities names", () => {
+  test("renders cities names", async () => {
+    const promise = Promise.resolve();
     render(<App />);
-    const cityTitle1 = screen.getByText(/nuuk, gl/i);
-    const cityTitle2 = screen.getByText(/urubici, br/i);
-    const cityTitle3 = screen.getByText(/nairobi, ke/i);
+    const cityTitle1 = screen.getByRole("heading", { name: /nuuk, gl/i });
+    const cityTitle2 = screen.getByRole("heading", { name: /urubici, br/i });
+    const cityTitle3 = screen.getByRole("heading", { name: /nairobi, ke/i });
 
     expect(cityTitle1).toBeInTheDocument();
     expect(cityTitle2).toBeInTheDocument();
     expect(cityTitle3).toBeInTheDocument();
+    await act(() => promise);
   });
 });

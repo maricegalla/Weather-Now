@@ -1,9 +1,7 @@
 import React from "react";
-import { render, cleanup, act } from "@testing-library/react";
+import { render, act } from "@testing-library/react";
 import { screen } from "@testing-library/dom";
 import Card from "src/components/Card";
-
-afterEach(cleanup);
 
 describe("testing the `card` component", () => {
   test("renders the card", async () => {

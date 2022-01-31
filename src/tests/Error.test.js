@@ -1,8 +1,6 @@
 import React from "react";
-import { render, cleanup, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Error from "src/components/Error";
-
-afterEach(cleanup);
 
 describe("testing the `error` component", () => {
   test("renders the button", () => {

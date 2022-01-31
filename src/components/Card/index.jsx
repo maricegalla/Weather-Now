@@ -69,9 +69,9 @@ const Card = ({ city, country }) => {
   return (
     <CardContentContainer>
       <CardHeaderContainer>
-        <span>
+        <h3>
           {city}, {country}
-        </span>
+        </h3>
       </CardHeaderContainer>
       {(() => {
         if (loading) {
@@ -93,17 +93,17 @@ const Card = ({ city, country }) => {
                   <div>
                     <div>
                       <label>HUMIDITY</label>
-                      <span>
+                      <h3>
                         {cityData.hum}
                         <small>%</small>
-                      </span>
+                      </h3>
                     </div>
                     <div>
                       <label>PRESSURE</label>
-                      <span>
+                      <h3>
                         {cityData.press}
                         <small>hPa</small>
-                      </span>
+                      </h3>
                     </div>
                   </div>
                   <p>Updated at {cityData.updatedAt}</p>
