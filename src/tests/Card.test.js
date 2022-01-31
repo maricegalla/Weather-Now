@@ -6,7 +6,6 @@ import Card from "src/components/Card";
 afterEach(cleanup);
 
 describe("testing the `card` component", () => {
-
   test("renders the card", async () => {
     const promise = Promise.resolve();
     render(<Card />);

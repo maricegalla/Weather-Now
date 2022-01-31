@@ -5,6 +5,11 @@ import {
   CardMainContainer,
   CardFooterContainer,
 } from "./styles";
+import {
+  colorChange,
+  displayTime,
+  saveLocalStorage,
+} from "src/helpers/functions";
 import axios from "axios";
 import { ReactComponent as Loader } from "src/assets/loader.svg";
 import Error from "src/components/Error";
@@ -42,59 +47,6 @@ const Card = ({ city, country }) => {
       setError(true);
     }
   }, []);
-
-  const colorChange = (city) => {
-    const temperature = document.getElementById(city);
-    const realTemp = parseInt(temperature.innerText.slice(0, -1));
-
-    if (realTemp <= 5) {
-      temperature.style.color = "#69A3FF";
-    }
-    if (realTemp > 5 && realTemp <= 25) {
-      temperature.style.color = "#FF9632";
-    }
-    if (realTemp > 25) {
-      temperature.style.color = "#ED1946";
-    }
-  };
-
-  const displayTime = () => {
-    let time = "";
-
-    const currentTime = new Date();
-    const hours =
-      currentTime.getHours() < 10
-        ? "0" + currentTime.getHours()
-        : currentTime.getHours();
-
-    const minutes =
-      currentTime.getMinutes() < 10
-        ? "0" + currentTime.getMinutes()
-        : currentTime.getMinutes();
-
-    const seconds =
-      currentTime.getSeconds() < 10
-        ? "0" + currentTime.getSeconds()
-        : currentTime.getSeconds();
-
-    time += hours + ":" + minutes + ":" + seconds + " ";
-    if (hours > 11) {
-      time += "PM";
-    } else {
-      time += "AM";
-    }
-    return time;
-  };
-
-  const saveLocalStorage = (temp, press, updatedAt, hum, city) => {
-    const data = {
-      temperature: temp,
-      pressure: press,
-      humidity: hum,
-      updatedAt: updatedAt,
-    };
-    localStorage.setItem(city, JSON.stringify(data));
-  };
 
   const tryAgain = useCallback(
     (e) => {

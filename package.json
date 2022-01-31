@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.16.1"
+    "@testing-library/jest-dom": "^5.16.1",
+    "timekeeper": "^2.2.0"
   }
 }
