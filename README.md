@@ -78,9 +78,8 @@ Para verificar a cobertura dos testes, rode o seguinte comando
 
 ## Screenshot
 
-![Captura de tela de 2022-01-28 07-00-30](https://user-images.githubusercontent.com/76533793/151604121-3e58b902-1056-4df1-a64b-835dde14d64a.png)
+![Captura de tela de 2022-01-31 08-31-26](https://user-images.githubusercontent.com/76533793/151876174-aa01bf2e-58a7-40f0-b03f-9b230c330320.png)
 
 ## Deploy
 
 A aplicação está diponível na seguinte URL: https://weather-now-cyan.vercel.app/
-
