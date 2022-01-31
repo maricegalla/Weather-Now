@@ -54,4 +54,18 @@ describe("helpers functions", () => {
       expect(saveLocalStorageMock).toHaveBeenCalled();
     });
   });
+  describe("testing the `colorChange` function", () => {
+    test("set the temperature color", () => {
+      document.body.innerHTML = `
+      <p id="São Paulo">
+      29°
+      </p>
+      `;
+
+      const colorChangeMock = jest.spyOn(helpers, "colorChange");
+      colorChangeMock(cityMock);
+
+      expect(colorChangeMock).toHaveBeenCalled();
+    });
+  });
 });

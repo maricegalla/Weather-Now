@@ -1,15 +1,15 @@
 const colorChange = (city) => {
   const temperature = document.getElementById(city);
-  const realTemp = parseInt(temperature.innerText.slice(0, -1));
+  const realTemp = parseInt(temperature.innerText);
 
   if (realTemp <= 5) {
-    temperature.style.color = "#69A3FF";
+    temperature.style.color = "var(--blue)";
   }
   if (realTemp > 5 && realTemp <= 25) {
-    temperature.style.color = "#FF9632";
+    temperature.style.color = "var(--orange)";
   }
   if (realTemp > 25) {
-    temperature.style.color = "#ED1946";
+    temperature.style.color = "var(--red)";
   }
 };
 
