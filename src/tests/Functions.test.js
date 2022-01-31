@@ -4,18 +4,18 @@ const updatedAtMock = "08:55:09 PM";
 const humMock = 89;
 const cityMock = "São Paulo";
 
-beforeEach(() => {
-  jest.restoreAllMocks();
-});
-
-afterEach(() => {
-  const tk = require("timekeeper");
-  tk.reset();
-});
-
-const helpers = require("src/helpers/functions");
-
 describe("helpers functions", () => {
+  beforeEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  afterEach(() => {
+    const tk = require("timekeeper");
+    tk.reset();
+  });
+
+  const helpers = require("src/helpers/functions");
+
   describe("testing the `displayTime` function", () => {
     test("returns formated time AM", () => {
       const tk = require("timekeeper");
@@ -57,7 +57,7 @@ describe("helpers functions", () => {
   describe("testing the `colorChange` function", () => {
     test("set the temperature color", () => {
       document.body.innerHTML = `
-      <p id="São Paulo">
+      <p id="São Paulo" data-testid="temperature">
       29°
       </p>
       `;

@@ -9,6 +9,7 @@ import {
   colorChange,
   displayTime,
   saveLocalStorage,
+  reloader
 } from "src/helpers/functions";
 import axios from "axios";
 import { ReactComponent as Loader } from "src/assets/loader.svg";
@@ -61,9 +62,7 @@ const Card = ({ city, country }) => {
 
   useEffect(() => {
     getData(city);
-    setTimeout(() => {
-      window.location.reload();
-    }, 600000);
+    reloader()
   }, [city, getData]);
 
   return (
@@ -84,7 +83,7 @@ const Card = ({ city, country }) => {
             return (
               <>
                 <CardMainContainer>
-                  <p id={city}>
+                  <p id={city} data-testid="temperature">
                     {cityData.temp}
                     <small>°</small>
                   </p>
@@ -114,7 +113,7 @@ const Card = ({ city, country }) => {
             return (
               <>
                 <CardMainContainer>
-                  <p id={city}>
+                  <p id={city} data-testid="temperature">
                     {cityData.temp}
                     <small>°</small>
                   </p>

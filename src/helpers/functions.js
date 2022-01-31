@@ -51,4 +51,10 @@ const saveLocalStorage = (temp, press, updatedAt, hum, city) => {
   localStorage.setItem(city, JSON.stringify(data));
 };
 
-export { colorChange, displayTime, saveLocalStorage };
+const reloader = () => {
+  setTimeout(() => {
+    window.location.reload();
+  }, 600000);
+}
+
+export { colorChange, displayTime, saveLocalStorage, reloader };
